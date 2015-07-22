@@ -102,6 +102,27 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency> -->
+		
+		<!-- webjars bootstrap -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>bootstrap</artifactId>
+		    <version>3.3.5</version>
+		</dependency>
+		
+		<!-- webjars jquery -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>2.1.4</version>
+		</dependency>
+		
+		<!-- webjars bootstrap clean blog -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>origoni-startbootstrap-clean-blog</artifactId>
+		    <version>1.0.3</version>
+		</dependency>
 	</dependencies>
 	
 	<build>

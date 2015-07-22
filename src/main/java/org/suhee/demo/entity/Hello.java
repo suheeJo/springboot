@@ -1,13 +1,13 @@
-package com.suhee.test.model;
+package org.suhee.demo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity // DB의 데이터 모델은 JPA에서 Entity로 표현된다.
+@Entity
 public class Hello {
-	@Id // primarykey
-	@GeneratedValue // Id 값의 생성 방법을 정의한다. 
+	@Id
+	@GeneratedValue
 	int id;
 	
 	String name;

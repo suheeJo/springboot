@@ -1,4 +1,4 @@
-package com.suhee.test.controller;
+package org.suhee.demo.controller;
 
 import java.util.List;
 
@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.suhee.demo.dao.HelloDao;
+import org.suhee.demo.entity.Hello;
 
-import com.suhee.test.dao.HelloDao;
-import com.suhee.test.model.Hello;
-
-@RestController // @Controller + @ResponseBody
+@RestController
 public class HelloRestController {
 	
 	@Autowired
@@ -30,7 +29,6 @@ public class HelloRestController {
 	
 	@RequestMapping("/")
 	public String index() {
-		return "Helloworld";
+		return "helloworld!";
 	}
-
 }

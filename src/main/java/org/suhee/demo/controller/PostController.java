@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.suhee.demo.dao.PostDao;
 import org.suhee.demo.entity.Post;
 
@@ -20,7 +21,7 @@ public class PostController {
 	
 	/**
 	 * <pre>
-	 * 글을 작성한다.
+	 * 글을 작성할 페이지를 반환한다.
 	 *  
 	 * history
 	 * 2015. 7. 22. by 조수희
@@ -31,7 +32,25 @@ public class PostController {
 	 * @param post
 	 * @return
 	 */
-	@RequestMapping("/write")
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public String form(Post post) {
+		return "form";
+	}
+	
+	/**
+	 * <pre>
+	 * 글을 작성한다.
+	 *  
+	 * history
+	 * 2015. 7. 23. by 조수희
+	 * 초기 개발
+	 * </pre>
+	 *
+	 * @since 2015. 7. 23.오후 1:16:55
+	 * @param post
+	 * @return
+	 */
+	@RequestMapping(value = "/write", method = RequestMethod.POST) 
 	public String write(Post post) {
 		post.setRegDate(new Date());
 		return "redirect:/post/" + postDao.save(post).getId();

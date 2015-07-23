@@ -2,3 +2,11 @@ spring:
     view:
         prefix: /WEB-INF/jsp/
         suffix: .jsp
+        
+#    jpa:
+#        database: H2
+#    datasource:
+#        url: jdbc:h2:mem:testdb
+#        username: sa
+#        password: 
+#        driverClassName: org.h2.Driver

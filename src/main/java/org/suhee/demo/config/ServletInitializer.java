@@ -1,7 +1,8 @@
-package org.suhee.demo;
+package org.suhee.demo.config;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.suhee.demo.DemoApplication;
 
 public class ServletInitializer extends SpringBootServletInitializer {
 

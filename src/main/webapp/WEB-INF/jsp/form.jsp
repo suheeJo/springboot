@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +42,8 @@
 .pen h2 {font-size: 30px;}
 .pen h3 {font-size: 24px;}
 .pen h4 {font-size: 18px;}
+.errorblock {border: 2px solid red;}
+.error {color: red;}
 </style>
 </head>
 <body>
@@ -69,24 +72,33 @@
 	  <i class="pen-icon icon-createlink" data-action="createlink"></i>
 	</div>
 
-	<form action="/post/write" onsubmit="$('#content').val($('#pen').html()); pen.destroy();" method="post">
+	<form:form action="/post/write" commandName="post" onsubmit="if($('#pen').html()!='<p><br></p>')$('#content').val($('#pen').html()); pen.destroy();" method="post">
 
-		<input type="text" name="subject" placeholder="Subject"
-			style="height: 70px; width: 100%; font-size: 55px; 
-			border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 1px; outline-style: none; 
-			font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800;">
+    <form:errors path="*" cssClass="errorblock" element="div" />
 
-		<input type="hidden" name="content" id="content">
-
-		<hr style="margin-top: 2px; border-top: 1px solid #999;">
-
-		<div data-toggle="pen" data-placeholder="Content" id="pen" style="min-height: 200px;"></div>
-
-		<hr>
-
-		<button type="submit" class="btn btn-primary btn-lg btn-block">저장</button>
-
-	</form>
+	    <form:input type="text" path="title" placeholder="Title"
+	        style="height: 70px; width: 100%; font-size: 55px; 
+	        border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 1px; outline-style: none; 
+	        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800;" />
+	    <form:errors path="title" cssClass="error" />
+	
+	    <form:input type="text" path="subtitle" placeholder="Subtitle (option)"
+	        style="height: 60px; width: 100%; font-size: 24px; 
+	        border: none; border-right: 0px; border-top: 0px; boder-left: 0px; boder-bottom: 1px; outline-style: none; 
+	        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600;" />
+	
+	    <hr style="margin-top: 2px; border-top: 1px solid #999;">
+	
+	    <div data-toggle="pen" data-placeholder="Content" id="pen" style="min-height: 200px;"></div>
+	
+	    <form:input type="hidden" path="content" id="content" />
+	    <form:errors path="content" cssClass="error" />
+	
+	    <hr>
+	
+	    <button type="submit" class="btn btn-primary btn-lg btn-block">저장</button>
+	
+	</form:form>
 
 	<p class="text-muted">Powered By <a href="#">shjo</a> | WYSIWYG Editor by <a href="https://github.com/sofish/pen">Pen Editor</a></p>
 

@@ -3,9 +3,12 @@ package org.suhee.demo.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,19 +42,23 @@ public class PostController {
 	
 	/**
 	 * <pre>
-	 * 글을 작성한다.
+	 * 글 정보를 저장한다.
 	 *  
 	 * history
 	 * 2015. 7. 23. by 조수희
 	 * 초기 개발
 	 * </pre>
 	 *
-	 * @since 2015. 7. 23.오후 1:16:55
+	 * @since 2015. 7. 23.오후 2:52:23
 	 * @param post
+	 * @param bindingResult
 	 * @return
 	 */
 	@RequestMapping(value = "/write", method = RequestMethod.POST) 
-	public String write(Post post) {
+	public String write(@Valid Post post, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "form";
+		}
 		post.setRegDate(new Date());
 		return "redirect:/post/" + postDao.save(post).getId();
 	}
